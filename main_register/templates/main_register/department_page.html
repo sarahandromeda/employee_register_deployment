@@ -1,0 +1,70 @@
+{% extends 'main_register/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+<link href="{% static 'main_register/css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+{{ company.name }}
+{% endblock %}
+
+{% block content %}
+<!-- List of Departments in Selected Company -->
+<div class="row justify-content-center">
+    <div class="col-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <h4><a href="{% url 'user_home' %}">
+                {{ company.name }}
+            </a></h4>
+            <a href="{% url 'company_edit' company.id %}">
+                <button class="btn btn-success btn-sm">
+                    Edit
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+            </a>
+        </div>
+        <div class="list-group">
+            {% for department in departments %}
+                <a href="{% url 'employee_page' company.id department.id%}" id="view-instance" class="list-group-item list-group-item-action">
+                    <div class="d-flex justify-content-between align-items-center">
+                        {{ department.name }}
+                        <small class="text-muted">
+                            {{ department.employees.count }} 
+                            {% if department.employees.count == 1 %}
+                            Employee
+                            {% else %}
+                            Employees
+                            {% endif %}
+                        </small>
+                    </div>
+                    {% if department.department_head %}
+                    <div class="d-flex align-items-center">
+                        <small class="text-muted">
+                            Department Head: {{ department.department_head }}
+                        </small>
+                    </div>
+                    {% endif %}
+                </a>
+            {% endfor %}
+            <button type="button" id="new" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                Add New
+                <i class="bi bi-plus"></i>
+            </button>
+
+            <li class="list-group-item" id="new_form" style="display:none;">
+                <form action="{{department.id}}" method="POST">
+                    {% csrf_token %}
+                    {{ department_form|crispy }}
+                    <button type="submit" name="submit" class="btn btn-success btn-sm">Submit</button>
+                </form>
+            </li>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script src="{% static 'main_register/form_script.js' %}" defer></script>
+{% endblock %}

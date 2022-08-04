@@ -1,0 +1,11 @@
+{% extends 'main_register/base.html' %}
+{% block title %}
+Sign In
+{% endblock %}
+
+{% block content %}
+    <div class="text-center mt-4">
+        <h4>Please sign-in to access this page.</h4>
+        <a href="{% url 'login' %}"><h4>Login Here</h4></a>
+    </div>
+{% endblock %}

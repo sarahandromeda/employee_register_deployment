@@ -1,0 +1,27 @@
+{% extends 'main_register/base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <div class="text-center mt-4">
+        <h3>
+            Welcome to your own Business Registry
+        </h3>
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <p>
+                    <a href="{% url 'user_register' %}">Create an account</a> or 
+                    <a href="{% url 'login' %}">Login</a> to manage employee lists.
+                    You can create lists for different companies you manage,
+                    and different departments to house the lists of various employees.
+                    Add, update, or remove employees, departments, and companies with ease. 
+                    Please create a Company to house your lists even if you only manage one.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'main_register/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+Edit Company
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-5">
+        <h4>{{ company.name }}</h4>
+        <div class="list-group">
+             <!-- Create an edit form for each instance that replaces view with edit form-->
+             <li class="list-group-item" id="update_form">
+                <form action="/company/{{company.id}}/" method="POST" id="edit_company">
+                    {% csrf_token %}
+                    {{ company_edit_form|crispy }}
+                    <button type="submit" name="update" value="update_entry" class="btn btn-success btn-sm">Submit</button>
+                    <button type="submit" name="delete" value="delete_entry" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </li>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
