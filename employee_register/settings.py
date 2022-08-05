@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'register_app',
         'USER': 'SarahG',
         'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
     }
 }
 
