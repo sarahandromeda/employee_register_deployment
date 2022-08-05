@@ -49,9 +49,10 @@ class UserCreationForm(forms.ModelForm):
 
 class LoginEmailField(forms.Field):
     def validate(self, value):
-        if NewUser.objects.get(email=value):
+        try:
+            NewUser.objects.get(email=value)
             super().validate(value)
-        else:
+        except NewUser.DoesNotExist:
             raise ValidationError
 
 class UserAuthenticationForm(forms.ModelForm):
