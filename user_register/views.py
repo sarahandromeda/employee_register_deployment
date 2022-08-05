@@ -43,7 +43,7 @@ def login(response):
     else:
         form = UserAuthenticationForm()
 
-    return render(response, 'templates/login.html', {'form' : form})
+    return render(response, 'registration/login.html', {'form' : form})
 
 class PasswordChangeView(PasswordChangeView):
     """
