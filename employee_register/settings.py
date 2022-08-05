@@ -155,5 +155,6 @@ DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://business-registry.herokuapp.com']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
