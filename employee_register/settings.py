@@ -29,9 +29,9 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -88,8 +88,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'register_app',
         'USER': 'SarahG',
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': '127.0.0.1',
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': '',
     }
 }
 
@@ -110,6 +110,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'user_register.backends',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 

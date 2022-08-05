@@ -6,5 +6,5 @@ from user_register.views import PasswordChangeView
 urlpatterns = [
     path('register/', views.user_register, name='user_register'),
     path('change_password/', PasswordChangeView.as_view(), name='change_password'),
-    path('', include('django.contrib.auth.urls')),
+    path('login/', views.login, name='login')
 ]

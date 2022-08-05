@@ -6,14 +6,18 @@ Register
 
 {% load crispy_forms_tags %}
 {% block content %}
-<form method="POST" action="{% url 'user_register' %}" class="form-group">
-    {% csrf_token %}
-    {{form|crispy}}
-    <p>Already have an account? <a href="/login">Login Here</a></p>
-    <button type="submit" class="btn btn-success btn-sm">
-        Register
-    </button>
-</form>
+<div class="row justify-content-center">
+    <div class="col-5">
+        <form method="POST" action="{% url 'user_register' %}" class="form-group">
+            {% csrf_token %}
+            {{form|crispy}}
+            <p>Already have an account? <a href="/login">Login Here</a></p>
+            <button type="submit" class="btn btn-success btn-sm">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
 
