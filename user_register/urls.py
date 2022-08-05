@@ -7,5 +7,5 @@ urlpatterns = [
     path('register/', views.user_register, name='user_register'),
     path('change_password/', PasswordChangeView.as_view(), name='change_password'),
     path('login/', views.login_view, name='login'),
-    path('', include('django.contrib.auth.urls'),
+    path('', include('django.contrib.auth.urls')),
 ]
