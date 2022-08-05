@@ -33,7 +33,7 @@ def login_view(response):
     if response.method == 'POST':
         form = UserAuthenticationForm(response.POST)
         if form.is_valid():
-            email = response.POST.get('email')
+            email = response.POST.get('email_field')
             password = response.POST.get('password')
             user = authenticate(response, email=email, password=password)
             if user is not None:

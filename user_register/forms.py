@@ -58,11 +58,11 @@ class UserAuthenticationForm(forms.ModelForm):
     """
     Login user form
     """
-    email = LoginEmailField()
+    email_field = LoginEmailField()
 
     class Meta:
         model = NewUser
-        fields = ['email', 'password']
+        fields = ['email_field', 'password']
         widgets = {
             'password' : forms.PasswordInput(attrs={'class': 'form-control'})
         }
