@@ -18,7 +18,9 @@ def user_register(response):
         if form.is_valid():
             form.save()
             messages.success('Account created. Redirecting to login page...')
-        return redirect('user_home')
+            return redirect('user_home')
+        else:
+            return render(response, 'user_register/register.html', {'form': form})
     else:
         form = RegistrationForm()
 
@@ -37,6 +39,8 @@ def login_view(response):
             login(response, user)
             messages.success(response, 'Login Successful')
             return redirect('user_home')
+        else:
+            return render(response, 'registration/login.html', {'form' : form})
     else:
         form = UserAuthenticationForm()
 
