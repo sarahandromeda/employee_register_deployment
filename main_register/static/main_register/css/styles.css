@@ -4,6 +4,5 @@ h4 a {
 }
 
 h4 a:hover {
-    text-decoration: underline;
     color: rgba(40, 40, 40, 0.46);
 }
