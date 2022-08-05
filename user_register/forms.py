@@ -58,7 +58,7 @@ class UserAuthenticationForm(forms.ModelForm):
     """
     Login user form
     """
-    email_field = LoginEmailField()
+    email_field = LoginEmailField(label='Email')
 
     class Meta:
         model = NewUser
