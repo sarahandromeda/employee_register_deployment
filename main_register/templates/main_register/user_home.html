@@ -7,7 +7,7 @@ Home
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md">
+    <div class="col-md-auto">
         <!-- Personal User Information -->
         <h5>My Information</h5>
         <ul class="list-group list-group-flush">
@@ -17,7 +17,7 @@ Home
             <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
           </ul>
     </div>
-    <div class="col-md">
+    <div class="col-md-4">
         <!-- List of Companies Managed -->
         <h5>My Companies</h5>
         <div class="list-group">
