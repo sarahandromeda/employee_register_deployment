@@ -32,13 +32,14 @@ def login_view(response):
     """
     if response.method == 'POST':
         form = UserAuthenticationForm(response.POST)
-        email = response.POST.get('email')
-        password = response.POST.get('password')
-        user = authenticate(response, email=email, password=password)
-        if user is not None:
-            login(response, user)
-            messages.success(response, 'Login Successful')
-            return redirect('user_home')
+        if form.is_valid():
+            email = response.POST.get('email')
+            password = response.POST.get('password')
+            user = authenticate(response, email=email, password=password)
+            if user is not None:
+                login(response, user)
+                messages.success(response, 'Login Successful')
+                return redirect('user_home')
         else:
             return render(response, 'registration/login.html', {'form' : form})
     else:
