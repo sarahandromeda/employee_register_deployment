@@ -135,8 +135,8 @@ def department_edit(response, department_id):
         if response.POST.get('update'):
             department_edit_form = EditDepartmentForm(response.POST, instance=department)
             if department_edit_form.is_valid():
-                updated_dept = department_edit_form.save()
-                updated_dept.department_head = department_edit_form.cleaned_data['department_head']
+                department_edit_form.save()
+
                 # get company id for redirect
                 company = department.company_set.all()[0]
                 return redirect(
