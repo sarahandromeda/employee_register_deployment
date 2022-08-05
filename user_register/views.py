@@ -28,9 +28,6 @@ def login(response):
     """
     User Login View
     """
-    user = response.user
-    if user.is_authenticated:
-        return redirect('user_home')
     if response.method == 'POST':
         form = UserAuthenticationForm(response.POST)
         email = response.POST.get('email')
