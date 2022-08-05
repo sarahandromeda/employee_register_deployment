@@ -62,10 +62,11 @@ class UserAuthenticationForm(forms.ModelForm):
 
     class Meta:
         model = NewUser
-        fields = ['password']
+        fields = ['email', 'password']
         widgets = {
             'password' : forms.PasswordInput(attrs={'class': 'form-control'})
         }
+        
 
     def clean(self):
         cleaned_data = super().clean()
