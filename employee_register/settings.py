@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'user_register.backends',
+    'user_register.backends.CustomBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
