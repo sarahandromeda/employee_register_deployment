@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseRedirect
@@ -24,7 +24,7 @@ def user_register(response):
 
     return render(response, 'user_register/register.html', {'form': form})
 
-def login(response):
+def login_view(response):
     """
     User Login View
     """
