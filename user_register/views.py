@@ -37,7 +37,7 @@ def login(response):
         password = response.POST.get('password')
         user = authenticate(email=email, password=password)
         if user:
-            login(response, user)
+            login(user)
             messages.success(response, 'Login Successful')
             return redirect('user_home')
     else:
