@@ -32,8 +32,8 @@ def login_view(response):
         form = UserAuthenticationForm(response.POST)
         email = response.POST.get('email')
         password = response.POST.get('password')
-        user = authenticate(email=email, password=password)
-        if user:
+        user = authenticate(response, email=email, password=password)
+        if user is not None:
             login(user)
             messages.success(response, 'Login Successful')
             return redirect('user_home')
