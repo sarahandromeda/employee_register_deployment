@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate
@@ -46,13 +47,22 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+class LoginEmailField(forms.Field):
+    def validate(self, value):
+        if NewUser.objects.get(email=value):
+            super().validate(value)
+        else:
+            raise ValidationError
+
 class UserAuthenticationForm(forms.ModelForm):
     """
     Login user form
     """
+    email = LoginEmailField()
+
     class Meta:
         model = NewUser
-        fields = ['email', 'password']
+        fields = ['password']
         widgets = {
             'password' : forms.PasswordInput(attrs={'class': 'form-control'})
         }
