@@ -55,6 +55,8 @@ class LoginEmailField(forms.Field):
         except NewUser.DoesNotExist:
             raise ValidationError
 
+        
+
 class UserAuthenticationForm(forms.ModelForm):
     """
     Login user form
@@ -71,7 +73,7 @@ class UserAuthenticationForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        email = cleaned_data.get('email')
+        email = cleaned_data.get('email_field')
         password = cleaned_data.get('password')
         if not authenticate(email=email, password=password):
             raise forms.ValidationError(_('Invalid email or password. Note that both fields may be case sensitive.'))
