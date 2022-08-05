@@ -34,7 +34,7 @@ def login_view(response):
         password = response.POST.get('password')
         user = authenticate(response, email=email, password=password)
         if user is not None:
-            login(user)
+            login(response, user)
             messages.success(response, 'Login Successful')
             return redirect('user_home')
     else:
